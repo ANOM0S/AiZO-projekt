@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 class DataGenerator {
 public:
     vector<int> intGenerator(int type, int amount);

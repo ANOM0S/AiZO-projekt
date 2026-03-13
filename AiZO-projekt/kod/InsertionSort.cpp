@@ -13,6 +13,7 @@ void InsertionSort::sort(std::vector<int>& data) {
     }
 }
 
+
 void InsertionSort::sort(std::vector<double>& data) {
     for (int i = 1; i<data.size(); i++){
         for (int j = i; j>0; j--){

@@ -8,4 +8,5 @@ void uruchomTest(ISorter& algorytm, std::vector<int>& dane) {
     // Zatrzymujemy stoper...
     
     std::cout << "--- Koniec testu ---\n";
+    
 }

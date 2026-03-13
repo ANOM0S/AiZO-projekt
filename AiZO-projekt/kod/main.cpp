@@ -48,6 +48,7 @@ int main() {
 
     // table = generator.intGenerator(5, 10);
     // printVector(table);
+    
 
     vector<double> floatTable = generator.floatGenerator(1, 10);
     printVector(floatTable);

@@ -60,6 +60,7 @@ vector<int> DataGenerator::intGenerator(int type, int amount){
     } 
 }
 
+
 vector<double> DataGenerator::floatGenerator(int type, int amount){
     vector<double> floatTable;
     srand(static_cast<unsigned int>(time(nullptr)) ^ reinterpret_cast<uintptr_t>(this));
