@@ -4,7 +4,7 @@
 using namespace std;
 
 class PrintVector {
-    public:
-        void printVector(const vector<int>& vec);
-        void printVector(const vector<double>& vec);
+public:
+    void printVector(std::vector<int>& vec);
+    void printVector(std::vector<double>& vec);
 };

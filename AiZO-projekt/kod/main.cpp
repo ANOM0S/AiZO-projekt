@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "Tester.h"
+#include "QuickSort.h"
 #include "PrintVector.h"
 #include "DataGenerator.h"
 #include "InsertionSort.h"
@@ -10,19 +11,12 @@ using namespace std;
 
 int main() {
     DataGenerator generator;
+    QuickSort quickSort(0);
     InsertionSort insertionSort;
     Tester tester;
 
-    int sumTime;
-    vector<int> intTable;
-    
-    for (int i = 0; i < 100; i++){
-        intTable = generator.intGenerator(1,10000);
-        sumTime += tester.uruchomTest(insertionSort, intTable);
-    }
-
-    cout << sumTime/100 << " ms";
-    
+    vector<int> table = generator.intGenerator(3,500);
+    cout << tester.uruchomTest(quickSort,table);
 
 
     return 0;
