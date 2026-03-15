@@ -1,10 +1,14 @@
 #pragma once
-#include "ISorter.h" // Musimy zaincludować interfejs, bo po nim dziedziczymy
-#include <vector>    // Musimy zaincludować vector, bo używamy go w parametrze funkcji
+#include "ISorter.h"
+#include <vector>
 
-
+// Creating a HeapSort class that inherits from ISorter interface
 class HeapSort : public ISorter {
+private:
+    void heapify(std::vector<int>& data, int i, int n);
+    void heapify(std::vector<double>& data, int i, int n);
+
 public:
-    // Tu tylko OBIECUJESZ, że napiszesz tę funkcję. Dajesz średnik na końcu!
     void sort(std::vector<int>& data) override; 
+    void sort(std::vector<double>& data) override; 
 };

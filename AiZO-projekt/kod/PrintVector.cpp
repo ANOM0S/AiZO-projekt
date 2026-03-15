@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// ++++++++++++++++++++++++++++++++ INT VECTOR PRINTING +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void PrintVector::printVector(vector<int>& vec) {
     cout << endl << "[";
     for (size_t i = 0; i < vec.size(); ++i) {
@@ -14,6 +15,7 @@ void PrintVector::printVector(vector<int>& vec) {
     cout << "]";
 }
 
+// ++++++++++++++++++++++++++++++++++ FLOAT VECTOR PRINTING +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void PrintVector::printVector(vector<double>& vec) {
     cout << endl << "[";
     for (size_t i = 0; i < vec.size(); ++i) {

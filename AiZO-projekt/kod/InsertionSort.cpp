@@ -1,6 +1,9 @@
 #include <algorithm>
 #include "InsertionSort.h"
 
+// Simple insertion sort algorithm.
+
+// +++++++++++++++++++++++++++++++++++++++++++++++ INT SORTER ++++++++++++++++++++++++++++++++++++++++++++
 void InsertionSort::sort(std::vector<int>& data) {
     for (int i = 1; i<data.size(); i++){
         for (int j = i; j>0; j--){
@@ -13,7 +16,7 @@ void InsertionSort::sort(std::vector<int>& data) {
     }
 }
 
-
+// +++++++++++++++++++++++++++++++++++++++++++++++ FLOAT SORTER ++++++++++++++++++++++++++++++++++++++++++++
 void InsertionSort::sort(std::vector<double>& data) {
     for (int i = 1; i<data.size(); i++){
         for (int j = i; j>0; j--){

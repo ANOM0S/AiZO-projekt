@@ -2,13 +2,11 @@
 #include<iostream>
 #include<vector>
 
+// Definition of a Interface that will be inherited in next classes.
 class ISorter {
 public:
-    // Wirtualny destruktor
 	virtual ~ISorter() = default;
 
-    // Metoda do implementacji
 	virtual void sort(std::vector<int>& data) = 0;
-
 	virtual void sort(std::vector<double>& data) = 0;
 };

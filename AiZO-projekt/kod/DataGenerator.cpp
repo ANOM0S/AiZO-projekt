@@ -7,8 +7,10 @@
 
 using namespace std;
 
+// +++++++++++++++++++++++++++++++++++++++++ INT GENERATOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 vector<int> DataGenerator::intGenerator(int type, int amount){
     vector<int> intTable;
+    intTable.reserve(amount);
     srand(static_cast<unsigned int>(time(nullptr)) ^ reinterpret_cast<uintptr_t>(this));
 
     // Wybór petli w zależności od wybranego trybu:
@@ -18,9 +20,14 @@ vector<int> DataGenerator::intGenerator(int type, int amount){
     // 4 -> 33% początkowych posortowana (do testów)
     // 5 -> 66% początkowych posortowana (do testów)
     switch(type) {
-        case 1:
+        case 0:
             for (int i = 0; i<amount; i++){
                 intTable.push_back(rand() % 101);
+            }
+            return intTable;
+        case 1:
+            for (int i = 0; i<amount; i++){
+                intTable.push_back(rand() % 1001);
             }
             return intTable;
 
@@ -42,7 +49,7 @@ vector<int> DataGenerator::intGenerator(int type, int amount){
                 intTable.push_back(i*3 + (rand() % 5 - 2));
             }
             for (int i = static_cast<int>(amount*0.33); i<amount; i++){
-                intTable.push_back(rand() % 101);
+                intTable.push_back(rand() % 1001);
             }
             return intTable;
    
@@ -51,7 +58,7 @@ vector<int> DataGenerator::intGenerator(int type, int amount){
                 intTable.push_back(i*3 + (rand() % 5 - 2));
             }
             for (int i = static_cast<int>(amount*0.66); i<amount; i++){
-                intTable.push_back(rand() % 101);
+                intTable.push_back(rand() % 1001);
             }
             return intTable;
 
@@ -61,8 +68,10 @@ vector<int> DataGenerator::intGenerator(int type, int amount){
 }
 
 
+// +++++++++++++++++++++++++++++++++++++++++ FLOAT GENERATOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 vector<double> DataGenerator::floatGenerator(int type, int amount){
     vector<double> floatTable;
+    floatTable.reserve(amount);
     srand(static_cast<unsigned int>(time(nullptr)) ^ reinterpret_cast<uintptr_t>(this));
 
     // Wybór petli w zależności od wybranego trybu:
@@ -73,9 +82,14 @@ vector<double> DataGenerator::floatGenerator(int type, int amount){
     // 5 -> 66% początkowych posortowana (do testów)
 
     switch(type) {
-        case 1:
+        case 0:
             for (int i = 0; i<amount; i++){
                 floatTable.push_back(static_cast<double>(rand()) / RAND_MAX * 100.0);
+            }
+            return floatTable;
+        case 1:
+            for (int i = 0; i<amount; i++){
+                floatTable.push_back(static_cast<double>(rand()) / RAND_MAX * 1000.0);
             }
             return floatTable;
 
