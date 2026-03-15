@@ -1,9 +1,13 @@
 #pragma once
 #include "ISorter.h"
 #include <vector>
+#include <string>
+
+using namespace std;
 
 // Defining the class Tester.
 class Tester {
 public:
-    int uruchomTest(ISorter& algorytm, std::vector<int>& dane);
+    vector<string> benchmark(ISorter& algorytm, vector<int>& amounts, int generationType);
+    int uruchomTest(ISorter& algorytm, vector<int>& dane);
 };

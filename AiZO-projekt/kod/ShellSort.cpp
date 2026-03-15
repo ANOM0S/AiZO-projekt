@@ -31,8 +31,6 @@ void ShellSort::shellSort(vector<int>& data, int power, int n, int gapSelector){
     ++power;
     int iterator = gap;
 
-    cout << endl << gap;
-
     for (int k = 0; k<gap; k++){
         for (int i = iterator; i<data.size(); i+=gap){
             for (int j = i; j>=gap; j-=gap){

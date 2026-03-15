@@ -8,4 +8,5 @@ class PrintVector {
 public:
     void printVector(std::vector<int>& vec);
     void printVector(std::vector<double>& vec);
+    void printVector(std::vector<string>& vec);
 };

@@ -25,18 +25,22 @@ int QuickSort::partition(vector<int>& data, int leftIndex, int rightIndex, int p
     int pivot;
     switch (pivotNum){
         case 1:
+            // Pivot is the right
             pivot = data[rightIndex];
             break;
 
         case 2:
+            // Pivot is the middle
             pivot = data[(leftIndex + rightIndex) / 2];
             break;
         
         case 3:
+            // Pivot is random
             pivot = rand() % data.size();
             break;
         
         default:
+            // Pivot is left (Default)
             pivot = data[leftIndex];
             break;
     }
