@@ -8,7 +8,7 @@
 using namespace std;
 
 // +++++++++++++++++++++++++++++++++++++++++ INT GENERATOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-vector<int> DataGenerator::intGenerator(int type, int amount){
+vector<int> DataGenerator::intGenerator(int amount, int type){
     vector<int> intTable;
     intTable.reserve(amount);
     srand(static_cast<unsigned int>(time(nullptr)) ^ reinterpret_cast<uintptr_t>(this));
@@ -27,7 +27,7 @@ vector<int> DataGenerator::intGenerator(int type, int amount){
             return intTable;
         case 1:
             for (int i = 0; i<amount; i++){
-                intTable.push_back(rand() % 1001);
+                intTable.push_back(rand());
             }
             return intTable;
 
@@ -49,7 +49,7 @@ vector<int> DataGenerator::intGenerator(int type, int amount){
                 intTable.push_back(i*3 + (rand() % 5 - 2));
             }
             for (int i = static_cast<int>(amount*0.33); i<amount; i++){
-                intTable.push_back(rand() % 1001);
+                intTable.push_back(rand());
             }
             return intTable;
    
@@ -58,7 +58,7 @@ vector<int> DataGenerator::intGenerator(int type, int amount){
                 intTable.push_back(i*3 + (rand() % 5 - 2));
             }
             for (int i = static_cast<int>(amount*0.66); i<amount; i++){
-                intTable.push_back(rand() % 1001);
+                intTable.push_back(rand());
             }
             return intTable;
 
@@ -69,7 +69,7 @@ vector<int> DataGenerator::intGenerator(int type, int amount){
 
 
 // +++++++++++++++++++++++++++++++++++++++++ FLOAT GENERATOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-vector<double> DataGenerator::floatGenerator(int type, int amount){
+vector<double> DataGenerator::floatGenerator(int amount, int type){
     vector<double> floatTable;
     floatTable.reserve(amount);
     srand(static_cast<unsigned int>(time(nullptr)) ^ reinterpret_cast<uintptr_t>(this));

@@ -19,7 +19,8 @@ int main() {
     Tester tester;
     DataGenerator generator;
     PrintVector printer;
-        // Sorters
+
+    // Sorters
     InsertionSort insertionSort;
     QuickSort quickSortLeft(0);
     QuickSort quickSortRight(1);
@@ -28,64 +29,169 @@ int main() {
     HeapSort heapSort;
     ShellSort shellSort(1);
     ShellSort shellSortFrank(2);
-    
 
-    // Connecting to a file with predefined array to test sorting algorithms
-    ifstream inFile("./predefined/definedArray.txt");
-    
-    // Creating the testArray with defined size of first line in file
-    vector<int> testArray;
-    int size;
-    inFile >> size;
-    testArray.reserve(size);
-    
-    // Reading the file
-    int a;
-    while (inFile >> a){
-        testArray.push_back(a);
+    // Variables for main loop.
+    vector<int> intTable;
+    vector<double> doubleTable;
+    int actionType;
+    string fileName;
+
+    string actions = R"(
+|-------------------------------|
+|0 -> Wyswietl akcje            |
+|1 -> Wczytaj dane z pliku      |
+|2 -> Wygeneruj tabele          |
+|3 -> Wyswietl tabele           |
+|4 -> Posortuj tabele           |
+|5 -> Wykonaj pelna symulacje   |
+|6 -> cofnij / wylacz program   |
+|-------------------------------|
+)";
+
+    // Main Loop:
+    while(1){
+        string testType;
+        cout << "Podaj nazwe typu danych [int/float]: " << endl;
+        cin >> testType;
+
+        if (testType == "6") exit(0);
+        cout << actions;
+
+        while (testType == "Int" || testType == "int"){
+            cout << "Podaj rodzaj akcji ktora chcesz podjac: " << endl;
+            cin >> actionType;
+
+            switch (actionType) {
+                case 0:
+                    cout << actions;
+                    break;
+                
+                case 1: 
+                {
+                    cout << "Podaj nazwe pliku: " << endl;
+                    cin >> fileName;
+
+                    // Wczytanie pliku
+                    ifstream inFile(fileName);
+
+                    // Ustawienie wielkości 
+                    int size;
+                    inFile >> size;
+                    intTable.reserve(size);
+
+                    // Wczytanie wszystkich danych
+                    int a;
+                    while (inFile >> a){
+                        intTable.push_back(a);
+                    }
+                    break; 
+                }
+
+                case 2:
+                    int amount;
+                    cout << "Podaj ilosc danych: " << endl;
+                    cin >> amount;
+
+                    intTable = generator.intGenerator(amount);
+                    break;
+
+                case 3:
+                    printer.printVector(intTable);
+                    break;
+
+                case 4:
+
+                case 5:
+
+                case 6:
+                    testType = " ";
+                    break;
+                
+                default:
+                    cout << "Zła komenda!";
+                    break;
+            }
+        }
+
+        while (testType == "float" || testType == "Float"){
+            cout << "Podaj rodzaj akcji którą chcesz podjac: " << endl;
+            cin >> actionType;
+
+switch (actionType) {
+                case 0:
+                    cout << actions;
+                    break;
+                
+                case 1: 
+                {
+                    cout << "Podaj nazwe pliku: " << endl;
+                    cin >> fileName;
+
+                    // Wczytanie pliku
+                    ifstream inFile(fileName);
+
+                    // Ustawienie wielkości 
+                    int size;
+                    inFile >> size;
+                    intTable.reserve(size);
+
+                    // Wczytanie wszystkich danych
+                    int a;
+                    while (inFile >> a){
+                        intTable.push_back(a);
+                    }
+                    break; 
+                }
+
+                case 2:
+                    int amount;
+                    cout << "Podaj ilosc danych: " << endl;
+                    cin >> amount;
+
+                    doubleTable = generator.floatGenerator(amount);
+                    break;
+
+                case 3:
+                    printer.printVector(doubleTable);
+                    break;
+
+                case 4:
+
+                case 5:
+
+                case 6:
+                    testType = " ";
+                    break;
+                
+                default:
+                    cout << "Zła komenda!";
+                    break;
+            }
+
+        }
     }
+
     
 
-    // // Sorting etc.
-    //     // Testing each sorter:
-    //         // Printing array before sorting
-    // cout << endl << "Original:"; 
-    // printer.printVector(testArray);
-    //         // Making copies of the array (cuz algorithms are working on real tables not the copy)
-    // vector<int> arrayCopy;
-    // arrayCopy.assign(testArray.begin(),testArray.end());
-    //         // Testing each sorter while recreating the original array
-    //             // Insertion sort
-    // cout << endl << "insertion:";
-    // tester.uruchomTest(insertionSort, arrayCopy);
-    // printer.printVector(arrayCopy);
-    // arrayCopy.assign(testArray.begin(),testArray.end());
-    //             // Quick sort
-    // cout << endl << "Quick:";
-    // tester.uruchomTest(quickSortLeft, arrayCopy);
-    // printer.printVector(arrayCopy);
-    // arrayCopy.assign(testArray.begin(),testArray.end());
-    //             // Heap sort
-    // cout << endl << "Heap:";
-    // tester.uruchomTest(heapSort, arrayCopy);
-    // printer.printVector(arrayCopy);
-    // arrayCopy.assign(testArray.begin(),testArray.end());
-    //             // Shell sort
-    // cout << endl << "Shell:";
-    // tester.uruchomTest(shellSort, arrayCopy);
-    // printer.printVector(arrayCopy);
-    // arrayCopy.assign(testArray.begin(),testArray.end());
 
     // Generating data:
-    vector<int> sizes = {100000, 200000, 500000};
-    vector<string> times = tester.benchmark(shellSort, sizes, 1);
-    printer.printVector(times);
+    // vector<int> sizes = {100000, 200000, 500000};
+    // vector<string> times;
 
+    // times = tester.benchmark(insertionSort, sizes, 1);
+    // printer.printVector(times);
 
+    // times = tester.benchmark(heapSort, sizes, 1);
+    // printer.printVector(times);
 
-    // Waiting for a input to end a program (for checking data)
-    // cout << endl << endl << "Press ANYTHING to end the program" << endl;
-    // // cin.get();
+    // times = tester.benchmark(shellSort, sizes, 1);
+    // printer.printVector(times);
+
+    // times = tester.benchmark(quickSortLeft, sizes, 1);
+    // printer.printVector(times);
+
+    // times = tester.benchmark(quickSortMiddle, sizes, 1);
+    // printer.printVector(times);
 
     return 0;
 }

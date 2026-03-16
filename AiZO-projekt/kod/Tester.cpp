@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// INT TEST
 int Tester::uruchomTest(ISorter& algorytm, vector<int>& dane) {
     // 1. Starting timer
     auto start = std::chrono::high_resolution_clock::now();
@@ -17,6 +18,13 @@ int Tester::uruchomTest(ISorter& algorytm, vector<int>& dane) {
     // 3. stoping timer
     auto stop = std::chrono::high_resolution_clock::now();
 
+    for (int i = 0; i < dane.size()-1; i++){
+        if(dane[i]>dane[i+1]){
+            cout << "Blad w sortowaniu tablicy!!!";
+            exit(0);
+        }
+    }
+
     // 4. Calculating the difference
     int czasTrwania = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count();
 
@@ -24,7 +32,7 @@ int Tester::uruchomTest(ISorter& algorytm, vector<int>& dane) {
     return czasTrwania;
 }
 
-vector<string> Tester::benchmark(ISorter& algorytm, vector<int>& amounts, int generationType){
+vector<string> Tester::benchmarkInt(ISorter& algorytm, vector<int>& amounts, int generationType){
     DataGenerator generator;
     vector<int> table;
     vector<string> results;
@@ -33,6 +41,48 @@ vector<string> Tester::benchmark(ISorter& algorytm, vector<int>& amounts, int ge
         int result = 0;
         for (int j=0; j<100; j++){
             table = generator.intGenerator(generationType, amounts[i]);
+            result += uruchomTest(algorytm, table);
+        }
+        results.push_back(to_string(result/100) + "ms");
+    }
+
+    return results;
+}
+
+// FLOAT TEST
+int Tester::uruchomTest(ISorter& algorytm, vector<double>& dane) {
+    // 1. Starting timer
+    auto start = std::chrono::high_resolution_clock::now();
+
+    // 2. Sorting data
+    algorytm.sort(dane);
+
+    // 3. stoping timer
+    auto stop = std::chrono::high_resolution_clock::now();
+
+    for (int i = 0; i < dane.size()-1; i++){
+        if(dane[i]>dane[i+1]){
+            cout << "Blad w sortowaniu tablicy!!!";
+            exit(0);
+        }
+    }
+
+    // 4. Calculating the difference
+    int czasTrwania = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count();
+
+    // 5. Returning the time.
+    return czasTrwania;
+}
+
+vector<string> Tester::benchmarkFloat(ISorter& algorytm, vector<int>& amounts, int generationType){
+    DataGenerator generator;
+    vector<double> table;
+    vector<string> results;
+
+    for (int i=0; i<amounts.size(); i++){
+        int result = 0;
+        for (int j=0; j<100; j++){
+            table = generator.floatGenerator(generationType, amounts[i]);
             result += uruchomTest(algorytm, table);
         }
         results.push_back(to_string(result/100) + "ms");

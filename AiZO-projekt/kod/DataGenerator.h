@@ -6,6 +6,6 @@ using namespace std;
 // Defining the generator functions
 class DataGenerator {
 public:
-    vector<int> intGenerator(int type, int amount);
-    vector<double> floatGenerator(int type, int amount);
+    vector<int> intGenerator(int amount, int type = 0);
+    vector<double> floatGenerator(int amount, int type = 0);
 };

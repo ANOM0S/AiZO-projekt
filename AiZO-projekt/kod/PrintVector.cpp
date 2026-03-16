@@ -12,7 +12,7 @@ void PrintVector::printVector(vector<int>& vec) {
         cout << vec[i];
         if (i != vec.size() - 1) cout << ", ";
     }
-    cout << "]";
+    cout << "]" << endl;
 }
 
 // ++++++++++++++++++++++++++++++++++ FLOAT VECTOR PRINTING +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -22,7 +22,7 @@ void PrintVector::printVector(vector<double>& vec) {
         cout << vec[i];
         if (i != vec.size() - 1) cout << ", ";
     }
-    cout << "]";
+    cout << "]" << endl;
 }
 
 // ++++++++++++++++++++++++++++++++++ STRING VECTOR PRINTING +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -32,5 +32,5 @@ void PrintVector::printVector(vector<string>& vec) {
         cout << vec[i];
         if (i != vec.size() - 1) cout << ", ";
     }
-    cout << "]";
+    cout << "]" << endl;
 }
