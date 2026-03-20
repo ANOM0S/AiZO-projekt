@@ -1,24 +1,47 @@
 #pragma once
 #include "ISorter.h"
 #include <vector>
-#include <stdexcept>
 
+// Defining a class of a simple insertion sorter using ISorter interface. 
 template <typename T>
-class QuickSort : public ISorter<T> {
-private:
+class HybridSort : public ISorter<T> {
+    private:
     int pivot = 0;
     int depth = 1;
+
+    void insertionSort(std::vector<T>& data, int l, int r) {
+        for (int i = l + 1; i <= r; i++) {
+            T key = data[i];
+            int j = i - 1;
+            while (j >= l && data[j] > key) {
+                data[j + 1] = data[j];
+                j--;
+            }
+            data[j + 1] = key;
+        }
+    }
 
     // Int sort
     void sortHidden(vector<T>& data, int l, int r, int pivot, int depth){
         if (depth > 5000) {
-            throw std::runtime_error("Stack Overflow - przerwano dzialanie QuickSorta!");
+            throw std::runtime_error("Stack Overflow - przerwano dzialanie QuickSorta");
         }
 
-        if(l < r){
+        if(r - l + 1 > 15){
             int m = partition(data, l, r, pivot);
-            sortHidden(data, l, m, pivot, depth + 1);
-            sortHidden(data, m+1, r, pivot, depth + 1);
+
+            if(m-l>15){
+                sortHidden(data, l, m, pivot, depth + 1);
+            } else {
+                insertionSort(data, l, m);
+            }
+
+            if(r-(m+1)>15){
+                sortHidden(data, m+1, r, pivot, depth + 1);
+            } else {
+                insertionSort(data, m+1, r);
+            }
+            
         }
     }
 
@@ -65,7 +88,7 @@ private:
 }
 
 public:
-    QuickSort(int p = 0) {
+    HybridSort(int p = 2) {
         this->pivot = p;
     }
 

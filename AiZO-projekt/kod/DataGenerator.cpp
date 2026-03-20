@@ -27,7 +27,7 @@ vector<int> DataGenerator::intGenerator(int amount, int type){
             return intTable;
         case 1:
             for (int i = 0; i<amount; i++){
-                intTable.push_back(rand());
+                intTable.push_back(rand() % 10001);
             }
             return intTable;
 
