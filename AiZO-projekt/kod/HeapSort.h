@@ -8,50 +8,53 @@
 
 using namespace std;
 
-// Creating a HeapSort class that inherits from ISorter interface
+// klasa heapsort korzystająca z interfejsu isorter
+// Używamy template aby nie trzeba było robić wersji dla int i float
 template <typename T>
 class HeapSort : public ISorter<T> {
-private:
+private: 
+    // Klasa tworzenia kopca
     void heapify(vector<T>& table, int n, int i) {
+        // Zmienna dla największej liczby
         int largest = i;
         
-        // childs indexes
+        // indeksy dzieci
         int left = 2 * i + 1;  
         int right = 2 * i + 2; 
 
-        // 1. Comparing left child
+        // 1. Porównanie lewego dziecka
         if (left < n && table[left] > table[largest]) {
             largest = left;
         }
 
-        // 2. Comparing right child
+        // 2. Porównanie prawego dziecka
         if (right < n && table[right] > table[largest]) {
             largest = right;
         }
 
-        // 3. Checking if we need to swap
+        // 3. Sprawdzenie czy trzeba coś zmieniać
         if (largest != i) {
             swap(table[i], table[largest]);
             
-            // Using recursion to go "deeper"
+            // Wchodzenie głębiej przez rekurencję.
             heapify(table, n, largest);
         }
     }
 
 public:
+    // Publiczna klasa sortująca
     void sort(vector<T>& data){
         int n = data.size();
 
-        // Build heap (rearrange vector)
+        // Budowa kopca
         for (int i = n / 2 - 1; i >= 0; i--)
             heapify(data, n, i);
 
-        // One by one extract an element from heap
+        // Ekstrakcja korzenia i zamiana go z ostatnim elementem i zmniejszanie wielkości kopca
         for (int i = n - 1; i > 0; i--) {
-            // Move current root to end
             swap(data[0], data[i]);
 
-            // Call max heapify on the reduced heap
+            // użycie funkcji z mniejszym rozmiarem
             heapify(data, i, 0);
         }
     }   

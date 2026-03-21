@@ -2,6 +2,7 @@
 #include<cstdlib>
 #include<algorithm>
 #include<ctime>
+#include <random>
 
 #include "DataGenerator.h"
 
@@ -9,11 +10,15 @@ using namespace std;
 
 // +++++++++++++++++++++++++++++++++++++++++ INT GENERATOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 vector<int> DataGenerator::intGenerator(int amount, int type){
+    // Utworzenie tabeli wraz z zarezerwowaniem dla niej pamięci.
     vector<int> intTable;
     intTable.reserve(amount);
+
+    // Utworzenie losowości dla generowania danych do tabeli
     srand(static_cast<unsigned int>(time(nullptr)) ^ reinterpret_cast<uintptr_t>(this));
 
     // Wybór petli w zależności od wybranego trybu:
+    // 0 -> mniejsze dane dla testów
     // 1 -> normalne (losowe)
     // 2 -> posortowane (do testów)
     // 3 -> Odwrotnie posortowane (do testów)
@@ -27,7 +32,7 @@ vector<int> DataGenerator::intGenerator(int amount, int type){
             return intTable;
         case 1:
             for (int i = 0; i<amount; i++){
-                intTable.push_back(rand() % 10001);
+                intTable.push_back(rand());
             }
             return intTable;
 
@@ -70,17 +75,20 @@ vector<int> DataGenerator::intGenerator(int amount, int type){
 
 // +++++++++++++++++++++++++++++++++++++++++ FLOAT GENERATOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 vector<float> DataGenerator::floatGenerator(int amount, int type){
+    // Utworzenie tabeli wraz z zarezerwowaniem dla niej pamięci.
     vector<float> floatTable;
     floatTable.reserve(amount);
+
+    // Utworzenie losowości dla generowania danych do tabeli
     srand(static_cast<unsigned int>(time(nullptr)) ^ reinterpret_cast<uintptr_t>(this));
 
     // Wybór petli w zależności od wybranego trybu:
+    // 0 -> małe dla testów
     // 1 -> normalne (losowe)
     // 2 -> posortowane (do testów)
     // 3 -> Odwrotnie posortowane (do testów)
     // 4 -> 33% początkowych posortowana (do testów)
     // 5 -> 66% początkowych posortowana (do testów)
-
     switch(type) {
         case 0:
             for (int i = 0; i<amount; i++){
@@ -89,7 +97,7 @@ vector<float> DataGenerator::floatGenerator(int amount, int type){
             return floatTable;
         case 1:
             for (int i = 0; i<amount; i++){
-                floatTable.push_back(static_cast<float>(rand()) / RAND_MAX * 1000.0);
+                floatTable.push_back(static_cast<float>(rand()) / RAND_MAX * 1000000.0);
             }
             return floatTable;
 

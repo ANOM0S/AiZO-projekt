@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// Defining the generator functions
+// Definicja generatora.
 class DataGenerator {
 public:
     vector<int> intGenerator(int amount, int type = 0);

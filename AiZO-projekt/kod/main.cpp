@@ -1,9 +1,9 @@
-// Including c++ libraries
+// biblioteki c++
 #include <iostream>
 #include <vector>
 #include <fstream>
 
-// Including header files
+// pliki "header" z naszymi sorterami i innymi potrzebnymi plikami
 #include "Tester.h"
 #include "QuickSort.h"
 #include "ShellSort.h"
@@ -16,13 +16,12 @@
 
 using namespace std;
 
+// Główna funkcja
 int main() {
-// Creating instances
-    // General
-    DataGenerator generator;
-    string fileName;
+    // Tworzenie zmiennych
     int actionType;
     int sortingType;
+    string fileName;
     string actions = R"(
 |-------------------------------------------|
 |0 -> Wyswietl akcje                        |
@@ -49,6 +48,13 @@ int main() {
 |-----------------------------------|
 )";
 
+    // Stworzenie instancji generatora
+    DataGenerator generator;
+
+    // Stworzenie instancji "drukarek"
+    PrintVector<int> intPrinter;
+    PrintVector<float> floatPrinter;
+
     // Sorters - wszystkie muszą wiedzieć, że na ten moment sortują inty
     HybridSort<int> hybridSort(15);
     QuickSort<int> quickSortLeft(0);
@@ -60,11 +66,11 @@ int main() {
     ShellSort<int> shellSortFrank(2);
     TestMachine<int> intTestMachine; 
 
+    // Tablice pomocnicze INT
     Tester<int> intTester;
     vector<int> intTable;
     vector<int> intTableCopy;
     vector<int> sortedIntTable;
-    PrintVector<int> intPrinter;
 
     // Sorters - wszystkie muszą wiedzieć, że na ten moment sortują floaty
     HybridSort<float> floatHybridSort(15);
@@ -77,14 +83,15 @@ int main() {
     ShellSort<float> floatShellSortFrank(2);
     TestMachine<float> floatTestMachine;
 
+    // Tabele pomocnicze FLOAT
     Tester<float> floatTester;
     vector<float> floatTable; 
     vector<float> floatTableCopy;
     vector<float> sortedFloatTable;
-    PrintVector<float> floatPrinter;
 
-    // Main Loop:
+    // Pętla główna
     while(1){
+        // Zmienna pomocnicza do wyboru testów.
         string testType;
 
         // Wybór typu testów.

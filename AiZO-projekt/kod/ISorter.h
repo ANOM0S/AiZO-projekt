@@ -2,7 +2,7 @@
 #include<iostream>
 #include<vector>
 
-// Definition of a Interface that will be inherited in next classes.
+// Definicja interfejsu z którego będą korzystały wszystkie sortery
 template <typename T>
 class ISorter {
 public:
