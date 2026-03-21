@@ -69,8 +69,8 @@ vector<int> DataGenerator::intGenerator(int amount, int type){
 
 
 // +++++++++++++++++++++++++++++++++++++++++ FLOAT GENERATOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-vector<double> DataGenerator::floatGenerator(int amount, int type){
-    vector<double> floatTable;
+vector<float> DataGenerator::floatGenerator(int amount, int type){
+    vector<float> floatTable;
     floatTable.reserve(amount);
     srand(static_cast<unsigned int>(time(nullptr)) ^ reinterpret_cast<uintptr_t>(this));
 
@@ -84,43 +84,43 @@ vector<double> DataGenerator::floatGenerator(int amount, int type){
     switch(type) {
         case 0:
             for (int i = 0; i<amount; i++){
-                floatTable.push_back(static_cast<double>(rand()) / RAND_MAX * 100.0);
+                floatTable.push_back(static_cast<float>(rand()) / RAND_MAX * 100.0);
             }
             return floatTable;
         case 1:
             for (int i = 0; i<amount; i++){
-                floatTable.push_back(static_cast<double>(rand()) / RAND_MAX * 1000.0);
+                floatTable.push_back(static_cast<float>(rand()) / RAND_MAX * 1000.0);
             }
             return floatTable;
 
         case 2:
             for (int i = 0; i<amount; i++){
-                floatTable.push_back(i * 2.0 + (static_cast<double>(rand()) / RAND_MAX * 2.0 - 1.0));
+                floatTable.push_back(i * 2.0 + (static_cast<float>(rand()) / RAND_MAX * 2.0 - 1.0));
             }
             return floatTable;
 
         case 3:
             for (int i = 0; i<amount; i++){
-                floatTable.push_back(i * 2.0 + (static_cast<double>(rand()) / RAND_MAX * 2.0 - 1.0));
+                floatTable.push_back(i * 2.0 + (static_cast<float>(rand()) / RAND_MAX * 2.0 - 1.0));
             }
             reverse(floatTable.begin(), floatTable.end());
             return floatTable;
 
         case 4:
             for (int i = 0; i<static_cast<int>(amount*0.33); i++){
-                floatTable.push_back(i * 2.0 + (static_cast<double>(rand()) / RAND_MAX * 2.0 - 1.0));
+                floatTable.push_back(i * 2.0 + (static_cast<float>(rand()) / RAND_MAX * 2.0 - 1.0));
             }
             for (int i = static_cast<int>(amount*0.33); i<amount; i++){
-                floatTable.push_back(static_cast<double>(rand()) / RAND_MAX * 100.0);
+                floatTable.push_back(static_cast<float>(rand()) / RAND_MAX * 100.0);
             }
             return floatTable;
    
         case 5: 
             for (int i = 0; i<static_cast<int>(amount*0.66); i++){
-                floatTable.push_back(i * 2.0 + (static_cast<double>(rand()) / RAND_MAX * 2.0 - 1.0));
+                floatTable.push_back(i * 2.0 + (static_cast<float>(rand()) / RAND_MAX * 2.0 - 1.0));
             }
             for (int i = static_cast<int>(amount*0.66); i<amount; i++){
-                floatTable.push_back(static_cast<double>(rand()) / RAND_MAX * 100.0);
+                floatTable.push_back(static_cast<float>(rand()) / RAND_MAX * 100.0);
             }
             return floatTable;
 

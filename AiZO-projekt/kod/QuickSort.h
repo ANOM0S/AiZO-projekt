@@ -11,7 +11,7 @@ private:
 
     // Int sort
     void sortHidden(vector<T>& data, int l, int r, int pivot, int depth){
-        if (depth > 1000) {
+        if (depth > 3000) {
             throw std::runtime_error("Stack Overflow");
         }
 
@@ -23,7 +23,7 @@ private:
     }
 
     int partition(vector<T>& data, int leftIndex, int rightIndex, int pivotNum){
-        int pivot;
+        T pivot;
         switch (pivotNum){
             case 1:
                 // Pivot is the right

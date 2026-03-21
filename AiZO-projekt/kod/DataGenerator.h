@@ -7,5 +7,5 @@ using namespace std;
 class DataGenerator {
 public:
     vector<int> intGenerator(int amount, int type = 0);
-    vector<double> floatGenerator(int amount, int type = 0);
+    vector<float> floatGenerator(int amount, int type = 0);
 };

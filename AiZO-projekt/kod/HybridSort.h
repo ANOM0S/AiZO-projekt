@@ -24,8 +24,8 @@ class HybridSort : public ISorter<T> {
 
     // Int sort
     void sortHidden(vector<T>& data, int l, int r, int pivot, int depth){
-        if (depth > 1000) {
-            throw std::runtime_error("Stack Overflow - przerwano dzialanie QuickSorta");
+        if (depth > 3000) {
+            throw std::runtime_error("Stack Overflow");
         }
 
         if(r - l + 1 > threshold){
@@ -47,7 +47,7 @@ class HybridSort : public ISorter<T> {
     }
 
     int partition(vector<T>& data, int leftIndex, int rightIndex, int pivotNum){
-        int pivot;
+        T pivot;
         switch (pivotNum){
             case 1:
                 // Pivot is the right
