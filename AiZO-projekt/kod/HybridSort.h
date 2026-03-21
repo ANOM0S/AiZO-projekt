@@ -6,8 +6,9 @@
 template <typename T>
 class HybridSort : public ISorter<T> {
     private:
-    int pivot = 0;
+    int pivot = 2;
     int depth = 1;
+    int threshold;
 
     void insertionSort(std::vector<T>& data, int l, int r) {
         for (int i = l + 1; i <= r; i++) {
@@ -23,20 +24,20 @@ class HybridSort : public ISorter<T> {
 
     // Int sort
     void sortHidden(vector<T>& data, int l, int r, int pivot, int depth){
-        if (depth > 5000) {
+        if (depth > 1000) {
             throw std::runtime_error("Stack Overflow - przerwano dzialanie QuickSorta");
         }
 
-        if(r - l + 1 > 15){
+        if(r - l + 1 > threshold){
             int m = partition(data, l, r, pivot);
 
-            if(m-l>15){
+            if(m-l>threshold){
                 sortHidden(data, l, m, pivot, depth + 1);
             } else {
                 insertionSort(data, l, m);
             }
 
-            if(r-(m+1)>15){
+            if(r-(m+1)>threshold){
                 sortHidden(data, m+1, r, pivot, depth + 1);
             } else {
                 insertionSort(data, m+1, r);
@@ -88,8 +89,9 @@ class HybridSort : public ISorter<T> {
 }
 
 public:
-    HybridSort(int p = 2) {
+    HybridSort(int threshold = 5, int p = 2) {
         this->pivot = p;
+        this->threshold = threshold;
     }
 
     void sort(vector<T>& data){

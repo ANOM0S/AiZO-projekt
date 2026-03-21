@@ -11,8 +11,8 @@ private:
 
     // Int sort
     void sortHidden(vector<T>& data, int l, int r, int pivot, int depth){
-        if (depth > 5000) {
-            throw std::runtime_error("Stack Overflow - przerwano dzialanie QuickSorta!");
+        if (depth > 1000) {
+            throw std::runtime_error("Stack Overflow");
         }
 
         if(l < r){
@@ -37,7 +37,7 @@ private:
             
             case 3:
                 // Pivot is random
-                pivot = rand() % data.size();
+                pivot = data[leftIndex + (rand() % (rightIndex - leftIndex + 1))];
                 break;
             
             default:

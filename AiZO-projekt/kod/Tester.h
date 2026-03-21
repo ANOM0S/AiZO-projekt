@@ -22,6 +22,7 @@ public:
 
         for (int i = 0; i < amounts.size(); i++){
             long long result = 0; 
+            bool testFailed = false; // Flaga, czy wybuchło
             
             for (int j = 0; j < 100; j++){
                 if constexpr (is_same_v<T, int>) {
@@ -31,9 +32,24 @@ public:
                     table = generator.floatGenerator(amounts[i], generationType);
                 }
 
-                result += uruchomTest(algorytm, table);
+                try {
+                    result += uruchomTest(algorytm, table);
+                } 
+                catch (const std::runtime_error& e) {
+                    cout << "   [!] Przerwano test dla rozmiaru " << amounts[i] 
+                         << " - Powod: " << e.what() << endl;
+                    
+                    results.push_back("BLAD");
+                    
+                    testFailed = true;
+                    break; 
+                }
             }
-            results.push_back(to_string(result / 100) + " ms"); 
+
+            // Jeśli test przeszedł bez wybuchu, dopisujemy średni czas
+            if (!testFailed) {
+                results.push_back(to_string(result / 100) + " ms"); 
+            }
         }
 
         return results;

@@ -23,7 +23,9 @@ public:
         DataGenerator generator;
         PrintVector<string> printer;
 
-        HybridSort<T> hybridSort;
+        HybridSort<T> hybridSort10(10);
+        HybridSort<T> hybridSort35(35);
+        HybridSort<T> hybridSort75(75);
         QuickSort<T> quickSortLeft(0);
         QuickSort<T> quickSortRight(1);
         QuickSort<T> quickSortMiddle(2);
@@ -46,43 +48,51 @@ public:
                 case 1: cout << "\n--- Rozpoczynam testy normalnej generacji ---" << endl; break;
                 case 2: cout << "\n--- Rozpoczynam testy posortowanej generacji ---" << endl; break;
                 case 3: cout << "\n--- Rozpoczynam testy odwrotnie posortowanej generacji ---" << endl; break;
-                case 4: cout << "\n--- Rozpoczynam testy 33% posortowanej generacji ---" << endl; break;
-                case 5: cout << "\n--- Rozpoczynam testy 66% posortowanej generacji ---" << endl; break;
+                case 4: cout << "\n--- Rozpoczynam testy 33\% posortowanej generacji ---" << endl; break;
+                case 5: cout << "\n--- Rozpoczynam testy 66\% posortowanej generacji ---" << endl; break;
             }
 
-            cout << "Hybrid Sort:" << endl;
-            results = tester.benchmark(hybridSort, sizes, genType);
+            cout << endl << "Hybrid Sort (threshold = 10):";
+            results = tester.benchmark(hybridSort10, sizes, genType);
+            printer.printVector(results);
+
+            cout << endl << "Hybrid Sort: (threshold = 35):";
+            results = tester.benchmark(hybridSort35, sizes, genType);
+            printer.printVector(results);
+
+            cout << endl << "Hybrid Sort (threshold = 75):";
+            results = tester.benchmark(hybridSort75, sizes, genType);
             printer.printVector(results);
             
-            cout << "Quick Sort (Left):" << endl;
+            cout << endl << "Quick Sort (Left):";
             results = tester.benchmark(quickSortLeft, sizes, genType);
             printer.printVector(results);
             
-            cout << "Quick Sort (Right):" << endl;
+            cout << endl << "Quick Sort (Right):";
             results = tester.benchmark(quickSortRight, sizes, genType);
             printer.printVector(results);
             
-            cout << "Quick Sort (Middle):" << endl;
+            cout << endl << "Quick Sort (Middle):";
             results = tester.benchmark(quickSortMiddle, sizes, genType);
             printer.printVector(results);
             
-            cout << "Quick Sort (Random):" << endl;
+            cout << endl << "Quick Sort (Random):";
             results = tester.benchmark(quickSortRandom, sizes, genType);
             printer.printVector(results);
             
-            cout << "Heap Sort:" << endl;
+            cout << endl << "Heap Sort:";
             results = tester.benchmark(heapSort, sizes, genType);
             printer.printVector(results);
             
-            cout << "Shell Sort (1):" << endl;
+            cout << endl << "Shell Sort (Shell):";
             results = tester.benchmark(shellSort, sizes, genType);
             printer.printVector(results);
             
-            cout << "Shell Sort (2):" << endl;
+            cout << endl << "Shell Sort (Frank&Lazarus):";
             results = tester.benchmark(shellSortFrank, sizes, genType);
             printer.printVector(results);
         }
 
-        cout << "\nTesty zakonczone!" << endl;
+        cout << endl << "\nTesty zakonczone!";
     }
 };

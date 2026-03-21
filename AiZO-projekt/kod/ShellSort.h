@@ -30,8 +30,6 @@ private:
         ++power;
         int iterator = gap;
 
-        cout << endl << gap;
-
         for (int k = 0; k<gap; k++){
             for (int i = iterator; i<data.size(); i+=gap){
                 for (int j = i; j>=gap; j-=gap){
