@@ -44,7 +44,7 @@ public:
         vector<string> results;
         
         // Rozmiary - na podstawie testów wybrałem te wartości:
-        vector<int> sizes = {50000, 100000, 250000, 500000, 1000000, 2500000, 5000000};
+        vector<int> sizes = {100'000, 250'000, 500'000, 1'000'000, 2'000'000, 3'500'000, 5'000'000} ;
         
         // Pętla po wszystkich trybach generacji (od 1 do 5)
         int typeOfGeneration;

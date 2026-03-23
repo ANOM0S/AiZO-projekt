@@ -15,7 +15,7 @@ private:
     // Funkcja sortowania
     void sortHidden(vector<T>& data, int l, int r, int pivot, int depth){
         // sprawdzenie zabezpieczające program przed stack overflow
-        if (depth > 3000) {
+        if (depth > 10000) {
             throw std::runtime_error("Stack Overflow");
         }
 
