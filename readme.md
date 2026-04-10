@@ -44,6 +44,6 @@ To get the most accurate benchmarking results, it is highly recommended to compi
 ## Getting Started
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/AiZO-projekt.git
+    git clone https://github.com/ANOM0S/AiZO-projekt.git
     ```
 2. Run the program! everything works as and console app!
